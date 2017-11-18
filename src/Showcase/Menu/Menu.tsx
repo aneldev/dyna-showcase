@@ -60,7 +60,7 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 		let linkPath: string = listOfLinkPaths[0].link.path;
 
 		return (
-			<Link to={linkPath} className={this.style.styleLink}>
+			<Link to={linkPath} className={this.style.styleLink} onClick={()=>this.scrollToFocused()}>
 				<div className={this.style.logo}>
 					{showcase.logo}
 				</div>
@@ -198,9 +198,7 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 	}
 
 	public render(): JSX.Element {
-		const {
-			showcase,
-		} = this.props;
+		const {showcase} = this.props;
 
 		if (this.props.appApi.urlQuery.menuScrollTo) this.scrollToFocused();
 
