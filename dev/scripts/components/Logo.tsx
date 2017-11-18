@@ -9,7 +9,7 @@ export const Logo= ()=>(
       {faIcon('paper-plane ')}
     </div>
     <div className={styles.texts}>
-      <div className={styles.line1}>React Component</div>
+      <div className={styles.line1}>dyna</div>
       <div className={styles.line2}>showcase</div>
     </div>
   </div>
