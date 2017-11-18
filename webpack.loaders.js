@@ -1,11 +1,13 @@
 // help: http://webpack.github.io/docs/tutorials/getting-started/
+const USE_CSSMODULES = true;
+
 module.exports = [
   {
     // Javascript and JSX loader
     test: /\.(jsx|js)$/,
     loader: 'babel-loader',
     query: {
-      presets: ['es2015', 'react', 'stage-2']
+      presets: ['es2015', 'react', 'babel-polyfill', 'stage-2']
     }
   },
   {
@@ -31,7 +33,7 @@ module.exports = [
     test: /\.less$/,
     use: [
       'style-loader',
-      'css-loader?modules&localIdentName=less-[name]---[local]---[hash:base64:5]',
+      USE_CSSMODULES && 'css-loader?modules&localIdentName=less-[name]---[local]---[hash:base64:5]' || 'css-loader',
       {
         loader: 'postcss-loader',
         options: {
@@ -49,7 +51,7 @@ module.exports = [
     test: /\.scss$/,
     use: [
       'style-loader',
-      'css-loader?modules&localIdentName=scss-[name]---[local]---[hash:base64:5]',
+      USE_CSSMODULES && 'css-loader?modules&localIdentName=scss-[name]---[local]---[hash:base64:5]' || 'css-loader',
       {
         loader: 'postcss-loader',
         options: {
@@ -84,7 +86,7 @@ module.exports = [
     options: {
       limit: 50000,
       publicPath: '/static/',
-    },
+  },
   },
   // Alternative way to load fonts, always as links
   // {
