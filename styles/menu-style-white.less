@@ -1,0 +1,164 @@
+@animationSpeed: 0.25s;
+
+@foreground: black;
+@background: whitesmoke;
+
+@view-background: #eeeeee;
+@view-background-hover: lightgray;
+@view-selected-background: #c5c5c5;
+@props-selected-background: #c5c5c5;
+@props-view-hide-button-background: #e2e2e2;
+@props-view-hide-button-background-hover: #cbcbcb;
+
+.menuContainer {
+  color: @foreground;
+  background-color: @background;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .navIcon {
+    margin-right: 6px;
+  }
+
+  .navContainer {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 0 10px 40px 10px;
+
+    .navView {
+      ._styleLink();
+      ._navStyle();
+      padding: 3px 5px;
+      margin-top: 20px;
+      margin-left: 5px;
+
+      .navViewTitle {
+        font-size: 20px;
+      }
+
+      .navViewDescription {
+        font-size: 14px;
+        margin-left: 25px;
+        font-weight: normal;
+      }
+    }
+
+    .navViewSelected {
+      .navView();
+      background-color: @view-selected-background;
+      font-weight: bold;
+    }
+
+    .navViewProps {
+      ._styleLink();
+      ._navStyle();
+      padding: 3px 5px;
+      margin-top: 10px;
+      margin-left: 30px;
+
+      .navViewPropsTitle {
+        font-size: 18px;
+      }
+
+      .navViewPropsDescription {
+        font-size: 14px;
+        margin-left: 20px;
+        font-weight: normal;
+      }
+
+      .propsValuesExpanded {
+        padding-left: 20px;
+
+        .propsValues {
+          font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+          font-size: 11px;
+          white-space: pre;
+        }
+        .hidePropsButton {
+          .showHideButton()
+        }
+      }
+
+      .propsValuesCollapsed {
+        padding-left: 20px;
+        .showPropsButton {
+          .showHideButton()
+        }
+      }
+
+      .showHideButton {
+        font-size: 14px;
+        background-color: @props-view-hide-button-background;
+        display: inline;
+        padding: 2px 5px;
+        transition: background-color @animationSpeed;
+
+        &:hover {
+          background-color: @props-view-hide-button-background-hover;
+        }
+      }
+    }
+
+    .navViewPropsSelected {
+      .navViewProps();
+      background-color: @props-selected-background;
+      font-weight: bold;
+    }
+
+  }
+
+  .bottomContainer {
+    flex: 0 0 auto;
+    padding: 10px;
+
+    .bottomButtonUnSelected {
+      ._navStyle();
+      display: inline;
+      margin: 5px;
+      padding: 5px 10px;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .bottomButtonSelected {
+      .bottomButtonUnSelected();
+      background-color: @view-selected-background;
+    }
+  }
+
+  .showMenuButton {
+    position: fixed;
+    font-size: 30px;
+    left: 0;
+    bottom: 30px;
+    background: @background ;
+    border-radius: 0 5px 5px 0;
+    padding: 8px 14px 5px 14px;
+    cursor: pointer;
+    transition: left @animationSpeed;
+
+    &.hideShowMenuButton {
+      left: -50px;
+    }
+  }
+
+  // helper style functions
+
+  ._styleLink {
+    color: @foreground;
+    text-decoration: none;
+    display: block;
+  }
+
+  ._navStyle {
+    background-color: @view-background;
+    transition: background-color @animationSpeed;
+    &:hover {
+      background-color: @view-background-hover;
+    }
+  }
+
+}
+
