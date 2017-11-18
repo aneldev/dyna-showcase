@@ -3,7 +3,7 @@ import {CSSProperties} from 'react';
 import * as classNames from 'classnames/bind';
 import {guid} from 'dyna-guid';
 
-import {IAppApi, IViewsAsLinks} from "../../DynaReactComponentShowcase";
+import {IAppApi, IViewsAsLinks} from "../../DynaShowcase";
 import {faIcon} from "../../utils/faIcon";
 import {IShowcase, IShowcaseView, IShowcaseViewProps} from "../../interfaces";
 

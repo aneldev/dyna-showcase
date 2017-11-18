@@ -19,7 +19,7 @@ The demo will be opened in your default browser.
 
 ```
 import * as React from "react";
-import {DynaReactComponentShowcase} from 'DynaReactComponentShowcase';
+import {DynaShowcase} from 'DynaShowcase';
 
 const showcase = {
   views: [
@@ -68,7 +68,7 @@ const showcase = {
 
 export default class StartApp extends React.Component {
   render() {
-    return <DynaReactComponentShowcase showcase={showcase} />
+    return <DynaShowcase showcase={showcase} />
   }
 }
 ```
@@ -165,7 +165,7 @@ export const showcaseSimple = {
 
 ```
 import * as React from "react";
-import {DynaReactComponentShowcase} from 'DynaReactComponentShowcase';
+import {DynaShowcase} from 'DynaShowcase';
 
 const showcase = {
   views: [
@@ -180,7 +180,7 @@ const showcase = {
 
 export default class StartApp extends React.Component {
   render() {
-    return <DynaReactComponentShowcase showcase={showcase} />
+    return <DynaShowcase showcase={showcase} />
   }
 }
 ```
@@ -211,12 +211,12 @@ The Showcase is shipped with only two styles.
 How to import the `menu-style-red` style where is shipped with `dyna-showcase`;
 
 ```
-import {DynaReactComponentShowcase, menuStyleRed} from 'DynaReactComponentShowcase';
+import {DynaShowcase, menuStyleRed} from 'DynaShowcase';
 
 export default class MyShowcase extends React.Component<any, any> {
   public render() {
     return (
-      <DynaReactComponentShowcase
+      <DynaShowcase
         showcase={showcase}
         menuCssModule={menuStyleRed}
       />
@@ -232,21 +232,21 @@ You can style the aside menu 100%. You can change the layout if you want as well
 - create a new css file (os less or sass, whatever your dev env supports for cssModule)
 - copy paste the content of the file `/styles/menu-style-EMPTY.less` where contains only the layout
 - apply your styles in this new file
-- load this file and pass it to `menuCssModule` prop of the `DynaReactComponentShowcase` component
+- load this file and pass it to `menuCssModule` prop of the `DynaShowcase` component
 
 **Example to load your own style**
 
 How to import your own custom style.
 
 ```
-import {DynaReactComponentShowcase} from 'DynaReactComponentShowcase';
+import {DynaShowcase} from 'DynaShowcase';
 
 const menuStyle = require('./my-custom-styles/menu-style-dark-forest.less'); // or import depends your dev setup
 
 export default class MyShowcase extends React.Component<any, any> {
   public render() {
     return (
-      <DynaReactComponentShowcase
+      <DynaShowcase
         showcase={showcase}
         menuCssModule={menuStyle}
       />

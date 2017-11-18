@@ -3,7 +3,7 @@ import * as classNames from 'classnames/bind';
 
 import {Link} from "react-router-dom"
 import {IShowcase, IShowcaseView, IShowcaseViewProps} from "../../interfaces";
-import {IAppApi} from "../../DynaReactComponentShowcase";
+import {IAppApi} from "../../DynaShowcase";
 
 import {scrollToElement} from '../../utils/scrollTo'
 

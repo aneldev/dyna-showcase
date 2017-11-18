@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {DynaReactComponentShowcase} from './DynaReactComponentShowcase';
+import {DynaShowcase} from './DynaShowcase';
 import {faIcon} from './utils/faIcon';
 
 const menuStyleWhite = require('../styles/menu-style-white.less');
@@ -12,7 +12,7 @@ import "./index.less";
 
 export{
   IShowcase, IShowcaseView, IShowcaseViewProps,
-  DynaReactComponentShowcase,
+  DynaShowcase,
   faIcon,
   menuStyleWhite, menuStyleRed,
 }

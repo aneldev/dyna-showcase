@@ -6,16 +6,16 @@ import {Showcase} from './Showcase/Showcase';
 import {DynaURLQuery} from './utils/DynaUrlQuery';
 import {RouteComponentProps} from "react-router";
 
-const styles = require('./DynaReactComponentShowcase.less');
+const styles = require('./DynaShowcase.less');
 const defaultMenuCssModule = require('./../styles/menu-style-white.less');
 
-export interface DynaReactComponentShowcaseProps {
+export interface IDynaShowcaseProps {
   baseUrl?: string,
   showcase: IShowcase;
   menuCssModule?: any;
 }
 
-export interface DynaReactComponentShowcaseState {
+export interface IDynaShowcaseState {
 }
 
 export interface IAppApi {
@@ -38,13 +38,13 @@ export interface IViewsAsLinks {
   link: ILink;
 }
 
-export class DynaReactComponentShowcase extends React.Component<DynaReactComponentShowcaseProps, DynaReactComponentShowcaseState> {
-  static defaultProps: DynaReactComponentShowcaseProps={
+export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowcaseState> {
+  static defaultProps: IDynaShowcaseProps={
     showcase: null,
     menuCssModule: defaultMenuCssModule,
   };
 
-  constructor(props: DynaReactComponentShowcaseProps, context: any) {
+  constructor(props: IDynaShowcaseProps, context: any) {
     super(props, context);
   }
 
@@ -115,7 +115,7 @@ export class DynaReactComponentShowcase extends React.Component<DynaReactCompone
   }
 
   private get _appApi(): IAppApi {
-    let self:DynaReactComponentShowcase=this;
+    let self:DynaShowcase=this;
     return {
       get urlQuery(): any {return self._urlQueryHandler.getQuery().data},
       setUrlQuery: (partialQuery: any) => this._goToLink({query: partialQuery}),

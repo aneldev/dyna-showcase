@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IShowcase } from "../../interfaces";
-import { IAppApi } from "../../DynaReactComponentShowcase";
+import { IAppApi } from "../../DynaShowcase";
 export interface IMenuProps {
     showcase: IShowcase;
     viewSlug: string;
