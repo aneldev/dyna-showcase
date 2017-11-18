@@ -11,8 +11,7 @@
   "scripts": {
     "preinstall": "npm install -g typescript",
     "clear": "rimraf build temp",
-    "start": "npm run dev",
-    "dev": "webpack-dev-server --config webpack.dev.config.js --port 3220 --devtool eval --progress --hot --open --content-base dev/public --host 0.0.0.0",
+    "start": "webpack-dev-server --config webpack.dev.config.js --port 3220 --devtool eval --progress --hot --open --content-base dev/public --host 0.0.0.0",
     "build": "rimraf build && webpack --config webpack.build.config.js",
     "release": "npm run dist",
     "dist": "rimraf ./dist/ && npm run .build-index.d.ts && npm run .build-dist",
