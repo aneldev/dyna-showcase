@@ -113,7 +113,7 @@ export class Viewer extends React.Component<ViewerProps, ViewerState> {
   }
 
   public render(): JSX.Element {
-    const {appApi: {urlQuery: {showFrame}}} = this.props;
+	  const {appApi: {urlQuery: {showFrame, zoom}}} = this.props;
     const componentSetup: IComponentSetup = this.setupComponent();
     const wrapperClassName: string = cx({
         componentWrapper: true,
@@ -125,7 +125,7 @@ export class Viewer extends React.Component<ViewerProps, ViewerState> {
       <div className={styles.container}>
         <div className={styles.arrowsContainer}>
           <div className={this.getArrowClassName(-1)} onClick={() => this.next(-1)}>{faIcon('angle-left')}</div>
-          <div className={wrapperClassName}>
+	        <div className={wrapperClassName} style={{zoom: zoom / 100}}>
             <div className={componentSetup.wrapperClassName} style={componentSetup.wrapperStyle}>
               {componentSetup.component}
             </div>

@@ -160,9 +160,12 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 		const {
 			appApi: {
 				setUrlQuery,
-				urlQuery: {showFrame, hideMenu}
+				urlQuery: {showFrame, hideMenu, zoom}
 			}
 		} = this.props;
+		let zoomValue: number = zoom && Number(zoom) || 100;
+		if (zoomValue < 10) zoomValue = 10;
+		if (zoomValue > 1000) zoomValue = 1000;
 
 		return (
 			<div className={this.style.bottomContainer}>
@@ -174,6 +177,18 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 					className={showFrame ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
 					onClick={() => setUrlQuery({showFrame: showFrame ? undefined : 'yes'})}
 				>{faIcon('crop')}</div>
+				<div
+					className={this.style.bottomButtonUnSelected}
+					onClick={() => { if (zoomValue - 10 >= 10) setUrlQuery({zoom: zoomValue - 10});}}
+				>{faIcon('search-minus')}</div>
+				<div
+					className={this.style.bottomButtonUnSelected}
+					onClick={() => setUrlQuery({zoom: 100})}
+				>{zoomValue}%</div>
+				<div
+					className={this.style.bottomButtonUnSelected}
+					onClick={() => { if (zoomValue + 10 <= 1000) setUrlQuery({zoom: zoomValue + 10});}}
+				>{faIcon('search-plus')}</div>
 			</div>
 		);
 	}

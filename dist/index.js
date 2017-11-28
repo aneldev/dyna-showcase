@@ -10631,7 +10631,7 @@ class Showcase extends React.Component {
         }
     }
     render() {
-        const { showcase, viewSlug, propsSlug, appApi: { urlQuery: { hideMenu } } } = this.props;
+        const { showcase, viewSlug, propsSlug, appApi: { urlQuery: { hideMenu, zoom } } } = this.props;
         const asideClassName = cx({
             asideMenu: true,
             hideAsideMenu: hideMenu,
@@ -10750,10 +10750,22 @@ class Menu extends React.Component {
             (view.props || []).map((viewProp, index) => this.renderPropsOption(index, view, viewProp))));
     }
     renderBottomMenu() {
-        const { appApi: { setUrlQuery, urlQuery: { showFrame, hideMenu } } } = this.props;
+        const { appApi: { setUrlQuery, urlQuery: { showFrame, hideMenu, zoom } } } = this.props;
+        let zoomValue = zoom && Number(zoom) || 100;
+        if (zoomValue < 10)
+            zoomValue = 10;
+        if (zoomValue > 1000)
+            zoomValue = 1000;
         return (React.createElement("div", { className: this.style.bottomContainer },
             React.createElement("div", { className: hideMenu ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected, onClick: () => setUrlQuery({ hideMenu: hideMenu ? undefined : 'yes' }) }, faIcon_1.faIcon('chevron-left')),
-            React.createElement("div", { className: showFrame ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected, onClick: () => setUrlQuery({ showFrame: showFrame ? undefined : 'yes' }) }, faIcon_1.faIcon('crop'))));
+            React.createElement("div", { className: showFrame ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected, onClick: () => setUrlQuery({ showFrame: showFrame ? undefined : 'yes' }) }, faIcon_1.faIcon('crop')),
+            React.createElement("div", { className: this.style.bottomButtonUnSelected, onClick: () => { if (zoomValue - 10 >= 10)
+                    setUrlQuery({ zoom: zoomValue - 10 }); } }, faIcon_1.faIcon('search-minus')),
+            React.createElement("div", { className: this.style.bottomButtonUnSelected, onClick: () => setUrlQuery({ zoom: 100 }) },
+                zoomValue,
+                "%"),
+            React.createElement("div", { className: this.style.bottomButtonUnSelected, onClick: () => { if (zoomValue + 10 <= 1000)
+                    setUrlQuery({ zoom: zoomValue + 10 }); } }, faIcon_1.faIcon('search-plus'))));
     }
     renderShowMenuButton() {
         const { appApi: { urlQuery: { hideMenu } } } = this.props;
@@ -10906,7 +10918,7 @@ class Viewer extends React.Component {
         });
     }
     render() {
-        const { appApi: { urlQuery: { showFrame } } } = this.props;
+        const { appApi: { urlQuery: { showFrame, zoom } } } = this.props;
         const componentSetup = this.setupComponent();
         const wrapperClassName = cx({
             componentWrapper: true,
@@ -10916,7 +10928,7 @@ class Viewer extends React.Component {
         return (React.createElement("div", { className: styles.container },
             React.createElement("div", { className: styles.arrowsContainer },
                 React.createElement("div", { className: this.getArrowClassName(-1), onClick: () => this.next(-1) }, faIcon_1.faIcon('angle-left')),
-                React.createElement("div", { className: wrapperClassName },
+                React.createElement("div", { className: wrapperClassName, style: { zoom: zoom / 100 } },
                     React.createElement("div", { className: componentSetup.wrapperClassName, style: componentSetup.wrapperStyle }, componentSetup.component)),
                 React.createElement("div", { className: this.getArrowClassName(+1), onClick: () => this.next(+1) }, faIcon_1.faIcon('angle-right')))));
     }

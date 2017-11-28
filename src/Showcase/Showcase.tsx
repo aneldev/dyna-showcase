@@ -55,7 +55,7 @@ export class Showcase extends React.Component<ShowcaseProps, ShowcaseState> {
   public render(): JSX.Element {
     const {
       showcase, viewSlug, propsSlug,
-      appApi: {urlQuery:{hideMenu}}
+      appApi: {urlQuery:{hideMenu, zoom}}
     } = this.props;
     const asideClassName:string = cx({
       asideMenu: true,
