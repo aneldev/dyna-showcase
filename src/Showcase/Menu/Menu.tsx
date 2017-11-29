@@ -182,7 +182,7 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 					onClick={() => { if (zoomValue - 10 >= 10) setUrlQuery({zoom: zoomValue - 10});}}
 				>{faIcon('search-minus')}</div>
 				<div
-					className={this.style.bottomButtonUnSelected}
+					className={`${this.style.bottomButtonUnSelected} ${this.style.zoom100Percent}`}
 					onClick={() => setUrlQuery({zoom: 100})}
 				>{zoomValue}%</div>
 				<div
