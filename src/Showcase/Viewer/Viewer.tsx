@@ -28,6 +28,25 @@ export interface IComponentSetup {
 }
 
 export class Viewer extends React.Component<ViewerProps, ViewerState> {
+	constructor(props: ViewerProps) {
+		super(props);
+		this.handlerOnKeyDown = this.handlerOnKeyDown.bind(this);
+	}
+
+	public componentDidMount(): void {
+		window.addEventListener('keydown', this.handlerOnKeyDown);
+	}
+
+	public componentWillUnmount(): void {
+		window.removeEventListener('keydown', this.handlerOnKeyDown);
+	}
+
+	private handlerOnKeyDown(event: KeyboardEvent): void {
+		if (event.keyCode===37) this.next(-1);
+		if (event.keyCode===38) this.next(-1);
+		if (event.keyCode===39) this.next(+1);
+		if (event.keyCode===40) this.next(+1);
+	}
 
   private noComponent(): JSX.Element {
     return (
@@ -39,7 +58,7 @@ export class Viewer extends React.Component<ViewerProps, ViewerState> {
     );
   }
 
-  private setupComponent(): IComponentSetup {
+	private setupComponent(): IComponentSetup {
     const {showcase, viewSlug, propsSlug} = this.props;
     let center: boolean = false;
     let wrapperClassName: string;
