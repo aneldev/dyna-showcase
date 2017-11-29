@@ -7,7 +7,7 @@ import {IAppApi, IViewsAsLinks} from "../../DynaShowcase";
 import {faIcon} from "../../utils/faIcon";
 import {IShowcase, IShowcaseView, IShowcaseViewProps} from "../../interfaces";
 
-const styles = require('./Viewer.less');
+const styles = require('./Viewer.module.less');
 const cx = classNames.bind(styles);
 
 export interface ViewerProps {

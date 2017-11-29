@@ -7,7 +7,7 @@ import {Menu} from './Menu/Menu'
 import {Viewer} from './Viewer/Viewer';
 import {IAppApi, IViewsAsLinks} from "../DynaShowcase";
 
-const styles = require('./Showcase.less');
+const styles = require('./Showcase.module.less');
 
 const cx = classNames.bind(styles);
 

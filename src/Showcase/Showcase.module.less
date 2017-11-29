@@ -1,0 +1,25 @@
+@animationSpeed: 0.25s;
+
+.container {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+
+	.asideMenu {
+		flex: 1 1 40%;
+		max-width: 500px;
+		height: 100%;
+		overflow-x: hidden;
+		transition: max-width @animationSpeed;
+
+		&.hideAsideMenu {
+			max-width: 0;
+		}
+	}
+
+	.viewer {
+		flex: 1 1 60%;
+		height: 100%;
+	}
+}
+

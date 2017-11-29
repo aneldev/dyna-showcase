@@ -6,8 +6,8 @@ import {Showcase} from './Showcase/Showcase';
 import {DynaURLQuery} from './utils/DynaUrlQuery';
 import {RouteComponentProps} from "react-router";
 
-const styles = require('./DynaShowcase.less');
-const defaultMenuCssModule = require('./../styles/menu-style-white.less');
+const styles = require('./DynaShowcase.module.less');
+const defaultMenuCssModule = require('../styles/menu-style-white.module.less');
 
 export interface IDynaShowcaseProps {
   baseUrl?: string,

@@ -2,7 +2,7 @@ import * as React from "react";
 import {DynaShowcase} from "../../src/";
 
 import showcase from './showcase';
-const menuStyle = require('./../../styles/menu-style-white.less');
+const menuStyle = require('../../styles/menu-style-white.module.less');
 
 import "./start.less";
 

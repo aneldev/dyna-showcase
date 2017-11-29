@@ -2,8 +2,8 @@ import * as React from 'react';
 import {DynaShowcase} from './DynaShowcase';
 import {faIcon} from './utils/faIcon';
 
-const menuStyleWhite = require('../styles/menu-style-white.less');
-const menuStyleRed = require('../styles/menu-style-red.less');
+const menuStyleWhite = require('../styles/menu-style-white.module.less');
+const menuStyleRed = require('../styles/menu-style-red.module.less');
 
 import {IShowcase, IShowcaseView, IShowcaseViewProps } from './interfaces';
 
