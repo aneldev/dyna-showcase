@@ -9321,6 +9321,31 @@ const faIcon_1 = __webpack_require__(22);
 const styles = __webpack_require__(82);
 const cx = classNames.bind(styles);
 class Viewer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            customProps: {},
+        };
+        this.handlerOnKeyDown = this.handlerOnKeyDown.bind(this);
+    }
+    componentDidMount() {
+        window.addEventListener('keydown', this.handlerOnKeyDown);
+        window.dynaShowcaseSetProps = (customProps) => this.setState({ customProps });
+    }
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.handlerOnKeyDown);
+        delete window.dynaShowcaseSetProps;
+    }
+    handlerOnKeyDown(event) {
+        if (event.keyCode === 37)
+            this.next(-1);
+        if (event.keyCode === 38)
+            this.next(-1);
+        if (event.keyCode === 39)
+            this.next(+1);
+        if (event.keyCode === 40)
+            this.next(+1);
+    }
     noComponent() {
         return (React.createElement("div", { className: styles.noComponent },
             React.createElement("div", { className: styles.icon },
@@ -9360,6 +9385,7 @@ class Viewer extends React.Component {
                     props.key = `_SHOWCASE_${dyna_guid_1.guid(1)}`;
             }
         }
+        props = Object.assign({}, props, (this.state.customProps || {}));
         component = React.cloneElement(component, props);
         wrapperClassName = view.wrapperClassName || '';
         wrapperStyle = view.wrapperStyle || {};
@@ -9406,7 +9432,6 @@ class Viewer extends React.Component {
             showFrame: !!showFrame,
             center: componentSetup.center
         });
-        debugger;
         return (React.createElement("div", { className: styles.container },
             React.createElement("div", { className: styles.arrowsContainer },
                 React.createElement("div", { className: this.getArrowClassName(-1), onClick: () => this.next(-1) }, faIcon_1.faIcon('angle-left')),

@@ -9,6 +9,7 @@ export interface ViewerProps {
     appApi: IAppApi;
 }
 export interface ViewerState {
+    customProps: any;
 }
 export interface IComponentSetup {
     center: boolean;
@@ -17,6 +18,10 @@ export interface IComponentSetup {
     wrapperStyle?: CSSProperties;
 }
 export declare class Viewer extends React.Component<ViewerProps, ViewerState> {
+    constructor(props: ViewerProps);
+    componentDidMount(): void;
+    componentWillUnmount(): void;
+    private handlerOnKeyDown(event);
     private noComponent();
     private setupComponent();
     private readonly linkIndex;

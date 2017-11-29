@@ -255,6 +255,25 @@ export default class MyShowcase extends React.Component<any, any> {
 }
 ```
 
+# Navigation
+
+Use the arrow keys to navigate.
+
+# Debug!
+
+ Open your browser's console, and the use the method `dynaShowcaseSetProps({caption: 'John'})` to set custom props.
+ 
+ There props are applied on all components even if you navigate. To clean these props simply apply an empty object like this: `dynaShowcaseSetProps({})`.
+ 
+To demostrate it:
+- npm start
+- go to [http://localhost:3220/buttons/primary?spv-buttons-danger=yes&spv-buttons-warning=yes](http://localhost:3220/buttons/primary?spv-buttons-danger=yes&spv-buttons-warning=yes)
+- open the console of you browser and execute
+- `dynaShowcaseSetProps({bsStyle: 'danger'})`
+- the button will become red!
+
+**Note**: These props are permanent; don't forget to clean the props with `dynaShowcaseSetProps({})`.
+
 # Still in progress
 
 - The project is still in beta version
