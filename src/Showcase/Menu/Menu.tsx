@@ -160,7 +160,7 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 		const {
 			appApi: {
 				setUrlQuery,
-				urlQuery: {showFrame, hideMenu, zoom}
+				urlQuery: {showFrame, hideMenu, zoom, kbNav}
 			}
 		} = this.props;
 		let zoomValue: number = zoom && Number(zoom) || 100;
@@ -171,22 +171,32 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 			<div className={this.style.bottomContainer}>
 				<div
 					className={hideMenu ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
+					title="Hide the aside menu"
 					onClick={() => setUrlQuery({hideMenu: hideMenu ? undefined : 'yes'})}
 				>{faIcon('chevron-left')}</div>
 				<div
+					className={kbNav ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
+					title="Enable/disable navigation with the keyboard arrow keys"
+					onClick={() => setUrlQuery({kbNav: kbNav ? undefined : 'yes'})}
+				>{faIcon('arrows')}</div>
+				<div
 					className={showFrame ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
+					title="Show the actual occupied space of the component"
 					onClick={() => setUrlQuery({showFrame: showFrame ? undefined : 'yes'})}
 				>{faIcon('crop')}</div>
 				<div
 					className={this.style.bottomButtonUnSelected}
+					title="Zoom out"
 					onClick={() => { if (zoomValue - 10 >= 10) setUrlQuery({zoom: zoomValue - 10});}}
 				>{faIcon('search-minus')}</div>
 				<div
 					className={`${this.style.bottomButtonUnSelected} ${this.style.zoom100Percent}`}
+					title="The zoom percent (what else?). Click for 100%."
 					onClick={() => setUrlQuery({zoom: 100})}
 				>{zoomValue}%</div>
 				<div
 					className={this.style.bottomButtonUnSelected}
+					title="Zoom in"
 					onClick={() => { if (zoomValue + 10 <= 1000) setUrlQuery({zoom: zoomValue + 10});}}
 				>{faIcon('search-plus')}</div>
 			</div>

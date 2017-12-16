@@ -6,6 +6,9 @@ export interface ViewerProps {
     showcase: IShowcase;
     viewSlug: string;
     propsSlug: string;
+    zoom: number;
+    showFrame: boolean;
+    allowKeyboardNavigation: boolean;
     appApi: IAppApi;
 }
 export interface ViewerState {

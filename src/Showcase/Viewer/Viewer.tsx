@@ -14,6 +14,9 @@ export interface ViewerProps {
 	showcase: IShowcase;
 	viewSlug: string;
 	propsSlug: string;
+	zoom: number;
+	showFrame:boolean;
+	allowKeyboardNavigation: boolean;
 	appApi: IAppApi;
 }
 
@@ -48,6 +51,9 @@ export class Viewer extends React.Component<ViewerProps, ViewerState> {
 	}
 
 	private handlerOnKeyDown(event: KeyboardEvent): void {
+		const {allowKeyboardNavigation} = this.props;
+		if (!allowKeyboardNavigation) return;
+
 		if (event.keyCode === 37) this.next(-1);
 		if (event.keyCode === 38) this.next(-1);
 		if (event.keyCode === 39) this.next(+1);
@@ -138,14 +144,13 @@ export class Viewer extends React.Component<ViewerProps, ViewerState> {
 	}
 
 	public render(): JSX.Element {
-		const {appApi: {urlQuery: {showFrame, zoom}}} = this.props;
+		const {showFrame, zoom} = this.props;
 		const componentSetup: IComponentSetup = this.setupComponent();
 		const wrapperClassName: string = cx({
 			componentWrapper: true,
-			showFrame: !!showFrame,
+			showFrame,
 			center: componentSetup.center
 		});
-
 
 		return (
 			<div className={styles.container}>
