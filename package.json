@@ -31,7 +31,7 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "dyna-guid": "^1.0.2",
+    "dyna-guid": "^1.0.5",
     "eventemitter3": "^2.0.3",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
