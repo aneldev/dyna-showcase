@@ -1,3 +1,5 @@
+declare const describe: any, it: any, expect: any;
+
 import {configure} from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 
