@@ -213,8 +213,8 @@ export default {
         <div style={{textAlign: 'center'}}>
           <h1>The end</h1>
           <div style={{fontSize: '20px'}}>
-            <p><Link to="https://github.com/aneldev/dyna-shocase">{faIcon('github')} Github</Link></p>
-            <p><Link to="https://www.npmjs.com/package/dyna-shocase">{faIcon('square')} npm</Link></p>
+            <p><Link to="https://github.com/aneldev/dyna-showcase">{faIcon('github')} Github</Link></p>
+            <p><Link to="https://www.npmjs.com/package/dyna-showcase">{faIcon('square')} npm</Link></p>
           </div>
         </div>
       ),
