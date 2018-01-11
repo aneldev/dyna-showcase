@@ -9,27 +9,23 @@
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
-    "clear": "rimraf build temp",
     "start": "webpack-dev-server --config webpack.dev.config.js --port 3200 --devtool eval --progress --inline --hot --content-base dev/public --open --host 127.0.0.1",
-    "release": "npm run dist",
-    "dist": "rimraf ./dist/ && npm run .build-index.d.ts && npm run .build-dist",
+    "build": "rimraf ./dist/ && npm run .build-index.d.ts && npm run .build-dist",
     ".build-index.d.ts": "tsc && rm ./dist/index.js && npm run .build-index.d.ts-clear",
     ".build-index.d.ts-clear": "cd dist/ && find . -name \\*.js -delete && cd ..",
     ".build-dist": "set NODE_ENV=production && webpack --config webpack.dist.config.js",
-    "test": "jest --coverage --no-cache --runInBand",
-    "test-only": "jest --coverage --no-cache --runInBand",
-    "test-watch": "jest --watch --verbose --runInBand",
+    "release": "npm run build && npm run publish-push",
     "commit": "git add -u && git add -A && git commit -m",
     "commit-amend": "git add -u && git add -A && git commit --amend --no-edit",
-    "pp": "npm run publish-push",
-    "publish-push": "npm version patch && npm publish && git push && git push --tags",
-    "tpp": "npm run test-publish-push",
-    "test-publish-push": "npm test && npm version patch && npm publish && git push && git push --tags",
+    "publish-push": "git add -u && git add -A && git commit -m --amend --no-edit; npm version patch && npm publish && git push && git push --tags",
     "sync-externals": "node syncExternals.js",
-    "reinstall": "rm package-lock.json; rm -rf node_modules/ ; npm install"
+    "test": "jest --coverage --no-cache --runInBand",
+    "test-watch": "jest --watch --verbose --runInBand",
+    "clear-npm-cache": "npm cache clear --force",
+    "reinstall": "rm ./package-lock.json; rm -rf ./node_modules; npm install"
   },
   "keywords": [],
-  "author": "",
+  "author": "Anel dev",
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
@@ -46,6 +42,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.3",
     "@types/enzyme": "^3.1.5",
+    "@types/enzyme-adapter-react-16": "^1.0.1",
     "@types/jest": "^19.2.2",
     "@types/node": "^7.0.14",
     "@types/qs": "^6.5.0",
@@ -66,6 +63,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-runtime": "6.11.6",
+    "chokidar": "^1.7.0",
     "css-loader": "^0.28.4",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.1.0",
@@ -75,6 +73,8 @@
     "jest": "^21.1.0",
     "jest-cli": "^20.0.4",
     "jest-junit": "^1.5.1",
+    "jsdom": "11.5.1",
+    "jsdom-global": "3.0.2",
     "json-loader": "^0.5.4",
     "less": "^2.7.2",
     "less-loader": "^4.0.4",
@@ -98,9 +98,10 @@
     "webpack-dev-server": "^2.7.1"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./tests/setup/testsetup.js",
     "automock": false,
     "collectCoverage": false,
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "transform": {
       ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },

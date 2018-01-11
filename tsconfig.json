@@ -5,11 +5,12 @@
     "declaration": true,
     "declarationDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "jsx": "react",
     "allowJs": false,
+    "noErrorTruncation": true,
     "types" : [ "node" ]
   },
   "files": [

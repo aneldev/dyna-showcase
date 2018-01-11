@@ -1,1 +1,1 @@
-{"version":3,"file":"faIcon.js","sourceRoot":"","sources":["../../src/utils/faIcon.tsx"],"names":[],"mappings":";;AAAA,+BAA+B;AAElB,QAAA,MAAM,GAAG,CAAC,mBAA0B,EAAE,YAAiB,EAAE,EAAE,EAAE,CAAC,2BAAG,SAAS,EAAE,SAAS,mBAAmB,IAAI,SAAS,EAAE,CAAC,IAAI,EAAE,iBAAc,MAAM,GAAG,CAAC"}
+{"version":3,"file":"faIcon.js","sourceRoot":"","sources":["../../src/utils/faIcon.tsx"],"names":[],"mappings":";;AAAA,6BAA+B;AAElB,QAAA,MAAM,GAAG,UAAC,mBAA0B,EAAE,SAAmB;IAAnB,0BAAA,EAAA,cAAmB;IAAK,OAAA,2BAAG,SAAS,EAAE,CAAA,WAAS,mBAAmB,SAAI,SAAW,CAAA,CAAC,IAAI,EAAE,iBAAc,MAAM,GAAG;AAAvF,CAAuF,CAAC"}
