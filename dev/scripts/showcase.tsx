@@ -8,8 +8,8 @@ import {Button, ButtonGroup, ButtonToolbar, DropdownButton, Glyphicon, MenuItem,
 import {Link} from "react-router-dom";
 import {faIcon} from "../../src/utils/faIcon";
 
-import "./Showcase.less";
-const styles = require('./Showcase.module.less');
+import "./_Showcase.less";
+const styles = require('./_Showcase.module.less');
 
 export default {
   logo: <Logo />,
