@@ -8,6 +8,7 @@ export interface ViewerProps {
     propsSlug: string;
     zoom: number;
     showFrame: boolean;
+    hideNavArrows: boolean;
     allowKeyboardNavigation: boolean;
     appApi: IAppApi;
 }
