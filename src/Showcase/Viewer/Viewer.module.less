@@ -1,85 +1,87 @@
 .container {
-	height: 100%;
+  height: 100%;
 
-	.arrowsContainer {
-		display: flex;
-		height: 100%;
+  .arrowsContainer {
+    display: flex;
+    height: 100%;
 
-		.arrow {
-			.verticalMiddle();
-			flex: 0 0 auto;
-			font-size: 50px;
-			padding: 0 20px;
-			color: lightgray;
-			cursor: pointer;
-			transition: color 200ms;
-			user-select: none;
+    .arrow {
+      .verticalMiddle();
+      flex: 0 0 auto;
+      font-size: 50px;
+      padding: 0 20px;
+      color: lightgray;
+      cursor: pointer;
+      transition: color 200ms;
+      user-select: none;
 
-			&.disabled {
-				color: transparent;
-				cursor: initial;
-			}
+      &.disabled {
+        color: transparent;
+        cursor: initial;
+      }
 
-			&.hideNavArrows {
-				display: none;
-			}
+      &.hideNavArrows {
+        display: none;
+      }
 
-			&:hover {
-				color: gray;
-				&.disabled {
-					color: transparent;
-					cursor: initial;
-				}
-			}
-		}
+      &:hover {
+        color: gray;
+        &.disabled {
+          color: transparent;
+          cursor: initial;
+        }
+      }
+    }
 
-		.componentWrapper {
-			flex: 1 1 100%;
-			max-height: 100%;
+    .componentWrapper {
+      flex: 1 1 100%;
+      max-height: 100%;
 
-			&.showFrame {
-				> * {
-					border: 4px solid red;
-				}
-			}
+      &.showFrame {
+        box-shadow: inset 0 0 0px 4px orange;
 
-			&.center {
-				.verticalMiddle();
-				height: 100%;
-			}
+        > * {
+          border: 4px solid red;
+        }
+      }
 
-			.component {
+      &.center {
+        .verticalMiddle();
+        height: 100%;
+      }
 
-			}
+      .component {
 
-			.noComponent {
-				text-align: center;
-				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-				color: #353535;
+      }
 
-				.icon {
-					font-size: 80px;
-				}
-				.line1 {
-					padding: 10px 0;
-					font-size: 22.5px;
-					text-align: center;
-				}
-				.line2 {
-					text-align: center;
-					i {
-						padding-right: 10px;
-					}
-				}
-			}
-		}
-	}
+      .noComponent {
+        text-align: center;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        color: #353535;
+
+        .icon {
+          font-size: 80px;
+        }
+        .line1 {
+          padding: 10px 0;
+          font-size: 22.5px;
+          text-align: center;
+        }
+        .line2 {
+          text-align: center;
+          i {
+            padding-right: 10px;
+          }
+        }
+      }
+    }
+  }
 }
 
 .verticalMiddle {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	vertical-align: middle;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
 }
