@@ -178,7 +178,7 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 					className={hideNavArrows ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
 					title="Show/hide the nav arrows in viewer"
 					onClick={() => setUrlQuery({hideNavArrows: hideNavArrows ? undefined : 'yes'})}
-				>{faIcon('ban')}{faIcon('arrows-h')}</div>
+				>{faIcon('chevron-left')}{faIcon('ban')}{faIcon('chevron-right')}</div>
 				<div
 					className={kbNav ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
 					title="Enable/disable navigation with the keyboard arrow keys"

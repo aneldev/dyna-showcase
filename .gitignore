@@ -5,4 +5,4 @@ node_modules/
 temp/
 npm-debug.log
 bash.exe.stackdump
-syncExternalsList.js
+/syncExternalsList.js
