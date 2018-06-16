@@ -160,7 +160,7 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 		const {
 			appApi: {
 				setUrlQuery,
-				urlQuery: {showFrame, hideMenu, zoom, kbNav}
+				urlQuery: {showFrame, hideNavArrows, hideMenu, zoom, kbNav}
 			}
 		} = this.props;
 		let zoomValue: number = zoom && Number(zoom) || 100;
@@ -174,6 +174,11 @@ export class Menu extends React.Component<IMenuProps, IMenuState> {
 					title="Hide the aside menu"
 					onClick={() => setUrlQuery({hideMenu: hideMenu ? undefined : 'yes'})}
 				>{faIcon('chevron-left')}</div>
+				<div
+					className={hideNavArrows ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
+					title="Show/hide the nav arrows in viewer"
+					onClick={() => setUrlQuery({hideNavArrows: hideNavArrows ? undefined : 'yes'})}
+				>{faIcon('ban')}{faIcon('arrows-h')}</div>
 				<div
 					className={kbNav ? this.style.bottomButtonSelected : this.style.bottomButtonUnSelected}
 					title="Enable/disable navigation with the keyboard arrow keys"

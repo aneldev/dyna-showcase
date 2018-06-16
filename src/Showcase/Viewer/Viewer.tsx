@@ -15,7 +15,8 @@ export interface ViewerProps {
 	viewSlug: string;
 	propsSlug: string;
 	zoom: number;
-	showFrame:boolean;
+	showFrame: boolean;
+	hideNavArrows: boolean;
 	allowKeyboardNavigation: boolean;
 	appApi: IAppApi;
 }
@@ -117,12 +118,12 @@ export class Viewer extends React.Component<ViewerProps, ViewerState> {
 	private get linkIndex(): number {
 		const {viewSlug, propsSlug, appApi: {listOfLinkPaths}} = this.props;
 		return listOfLinkPaths.findIndex((linkPath: IViewsAsLinks) => {
-			return linkPath.viewSlug == viewSlug && (!propsSlug || linkPath.propsSlug == propsSlug );
+			return linkPath.viewSlug == viewSlug && (!propsSlug || linkPath.propsSlug == propsSlug);
 		});
 	}
 
 	private next(direction: number): void {
-		const {viewSlug, propsSlug, appApi: {goTo, listOfLinkPaths}} = this.props;
+		const {appApi: {goTo, listOfLinkPaths}} = this.props;
 		let index: number = this.linkIndex;
 		if (index == -1) return; // bad url, cannot find this component
 		index += direction;
@@ -133,13 +134,17 @@ export class Viewer extends React.Component<ViewerProps, ViewerState> {
 	}
 
 	private getArrowClassName(direction: number): string {
-		const {appApi: {listOfLinkPaths}} = this.props;
+		const {
+			appApi: {listOfLinkPaths},
+			hideNavArrows,
+		} = this.props;
 		const newIndex: number = this.linkIndex + direction;
 		const disabled: boolean = !(newIndex >= 0 && newIndex < listOfLinkPaths.length);
 
 		return cx({
 			arrow: true,
 			disabled,
+			hideNavArrows,
 		})
 	}
 
