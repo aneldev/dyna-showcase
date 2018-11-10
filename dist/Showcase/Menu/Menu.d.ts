@@ -17,16 +17,16 @@ export declare class Menu extends React.Component<IMenuProps, IMenuState> {
     static defaultProps: IMenuProps;
     componentDidMount(): void;
     private readonly style;
-    private cx(...args);
-    private scrollToFocused();
-    private renderLogo();
-    private getViewClassName(view, selectedViewSlug);
-    private getViewPropClassName(view, selectedViewSlug, viewProp, selectedViewProp);
-    private renderPropsViewPropsValues(view, viewProp);
-    private renderPropsOption(index, view, viewProp);
-    private renderViewOption(index, view);
-    private renderBottomMenu();
-    private renderShowMenuButton();
-    private handlerShowAsideMenu();
+    private cx;
+    private scrollToFocused;
+    private renderLogo;
+    private getViewClassName;
+    private getViewPropClassName;
+    private renderPropsViewPropsValues;
+    private renderPropsOption;
+    private renderViewOption;
+    private renderBottomMenu;
+    private renderShowMenuButton;
+    private handlerShowAsideMenu;
     render(): JSX.Element;
 }

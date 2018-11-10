@@ -25,11 +25,11 @@ export declare class Viewer extends React.Component<ViewerProps, ViewerState> {
     constructor(props: ViewerProps);
     componentDidMount(): void;
     componentWillUnmount(): void;
-    private handlerOnKeyDown(event);
-    private noComponent();
-    private setupComponent();
+    private handlerOnKeyDown;
+    private noComponent;
+    private setupComponent;
     private readonly linkIndex;
-    private next(direction);
-    private getArrowClassName(direction);
+    private next;
+    private getArrowClassName;
     render(): JSX.Element;
 }

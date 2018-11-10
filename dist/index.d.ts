@@ -5,4 +5,4 @@ declare const menuStyleRed: any;
 import { IShowcase, IShowcaseView, IShowcaseViewProps } from './interfaces';
 import "font-awesome/css/font-awesome.css";
 import "./index.less";
-export { IShowcase, IShowcaseView, IShowcaseViewProps, DynaShowcase, faIcon, menuStyleWhite, menuStyleRed };
+export { IShowcase, IShowcaseView, IShowcaseViewProps, DynaShowcase, faIcon, menuStyleWhite, menuStyleRed, };
