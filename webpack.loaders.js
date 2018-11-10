@@ -1,29 +1,21 @@
 // help: http://webpack.github.io/docs/tutorials/getting-started/
-const USE_CSSMODULES = true;
 
 module.exports = [
   {
-    // Javascript and JSX loader
-    test: /\.(jsx|js)$/,
-    loader: 'babel-loader',
-    query: {
-      presets: ['react'],
-    }
+    test: /\.js$/,
+    use: [
+      'babel-loader',
+      'source-map-loader',
+    ],
   },
   {
     // typescript loader
     test: /\.(tsx|ts)$/,
-    loader: 'awesome-typescript-loader',
-    query: {
-      ignoreDiagnostics: [
-        // for codes see at:https://github.com/Microsoft/TypeScript/blob/master/src/compiler/diagnosticMessages.json
-        //2304, // Cannot find name '{0}
-        //2305, // '{0}' has no exported member '{1}'
-        //2307, // Cannot find module '{0}'
-        //2339, // Property '{0}' does not exist on type '{1}'
-        //2346, //Supplied parameters do not match any signature of call target.
-      ]
-    }
+    use: [
+      'babel-loader',
+      'awesome-typescript-loader',
+      'source-map-loader',
+    ],
   },
   {	// css loader
     test: /\.css$/,
@@ -105,7 +97,7 @@ module.exports = [
     // inline images load (loads the url() defined in the css)
     // help: https://christianalfoni.github.io/react-webpack-cookbook/Inlining-images.html
     test: /\.(png|jpg|gif)$/,
-    loader: 'url?limit=100000'
+    loader: 'url-loader?limit=100000'
   },
   {
     test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
@@ -132,12 +124,11 @@ module.exports = [
   //     publicPath: '/static/',
   //   },
   // },
-  {	// json loader
-    test: /\.json$/, loader: "json-loader"
-  },
-  // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
   {
     test: /\.js$/, loader: "source-map-loader"
+  },
+  {
+    test: /\.ts$/, loader: "source-map-loader"
   },
   {
     test: /\.svg$/, loader: 'svg-inline-loader'

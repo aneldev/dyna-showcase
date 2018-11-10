@@ -1,24 +1,23 @@
-declare const describe: any, it: any, expect: any;
+import "jest";
 
-import {configure} from 'enzyme';
+import { configure } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 import * as React from 'react';
 import * as enzyme from 'enzyme';
 
-import {DynaShowcase} from './../../src';
+import {DynaShowcase} from './../..';
 
 describe('Home', () => {
-	let wrapper;
+  let wrapper;
 
-	it('has expected content with deep render', () => {
-		wrapper = enzyme.shallow(
+  it('has expected content with deep render', () => {
+    wrapper = enzyme.shallow(
 			<DynaShowcase showcase={null}/>,
-			{}
-		);
+      {}
+    );
 
-		expect(wrapper).toMatchSnapshot();
-	});
+    expect(wrapper).toMatchSnapshot();
+  });
 });

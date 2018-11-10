@@ -1,17 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home has expected content with deep render 1`] = `
-<BrowserRouter>
-  <div
-    className="appRouter"
-  >
-    <Route
-      render={[Function]}
-    />
-    <Route
-      path="/:viewSlug?/:propsSlug?"
-      render={[Function]}
-    />
-  </div>
-</BrowserRouter>
+<a
+  className="my-button my-button--style-ROUNDED my-button--color-WHITE_BLACK my-button--size-MEDIUM"
+  href={null}
+  onClick={[Function]}
+>
+  <button>
+    My button
+  </button>
+</a>
 `;

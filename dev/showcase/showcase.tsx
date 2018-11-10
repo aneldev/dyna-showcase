@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import {IShowcase} from "../../src/interfaces";
+import {IShowcase} from "../../src";
 
-import {Logo} from "./components/Logo";
+import {Logo} from "../logo";
 
 import {Button, ButtonGroup, ButtonToolbar, DropdownButton, Glyphicon, MenuItem, SplitButton, ToggleButton, ToggleButtonGroup} from 'react-bootstrap';
-import {Link} from "react-router-dom";
-import {faIcon} from "../../src/utils/faIcon";
+import {Link}                                                                                                                  from "react-router-dom";
+import {faIcon}                                                                                                                from "../../src";
 
 import "./showcase.less";
 const styles = require('./showcase.module.less');
