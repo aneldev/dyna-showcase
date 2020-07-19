@@ -11,5 +11,5 @@ export declare class DynaURLQuery extends EventEmitter {
     constructor(settings?: IDynaURLQuerySettings);
     private _settings;
     getQuery(partialQuery?: any, includeUrlsQuery?: boolean): IUrlQuery;
-    private readonly _urlQuery;
+    private get _urlQuery();
 }

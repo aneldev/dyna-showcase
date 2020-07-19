@@ -28,7 +28,7 @@ export declare class Viewer extends React.Component<ViewerProps, ViewerState> {
     private handlerOnKeyDown;
     private noComponent;
     private setupComponent;
-    private readonly linkIndex;
+    private get linkIndex();
     private next;
     private getArrowClassName;
     render(): JSX.Element;

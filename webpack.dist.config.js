@@ -1,7 +1,6 @@
-﻿// help: http://webpack.github.io/docs/configuration.html
-// help: https://webpack.github.io/docs/webpack-dev-server.html#webpack-dev-server-cli
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
+const webpack = require('webpack');
 
 const package_ = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 const loaders = require('./webpack.loaders');
@@ -9,6 +8,7 @@ const plugins = require('./webpack.plugins');
 
 const config = {
   mode: "development",    // distribute it without minification
+  target: "web",
   entry: [
     // do not load babel-polyfill here, the application should load the polyfills!
     // the entry application code
@@ -17,8 +17,9 @@ const config = {
   externals: Object.keys(package_.dependencies), // exclude all dependencies from the bundle
   optimization: {
     // help: https://webpack.js.org/guides/tree-shaking/
-    usedExports: true, // true to remove the dead code,
+    usedExports: true,  // true to remove the dead code,
   },
+  devtool: "source-map",     // help: https://webpack.js.org/configuration/devtool/
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
@@ -38,9 +39,11 @@ const config = {
     child_process: "empty",
   },
   module: {
-    rules: loaders
+    rules: loaders.module.rules,
   },
-  plugins: plugins.concat([]),
+  plugins: [
+    new webpack.NamedModulesPlugin(), // prints more readable module names in the browser console on HMR updates
+  ].concat(plugins.plugins),
 };
 
 module.exports = config;

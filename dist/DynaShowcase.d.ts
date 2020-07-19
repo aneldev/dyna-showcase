@@ -33,7 +33,7 @@ export declare class DynaShowcase extends React.Component<IDynaShowcaseProps, ID
     private _createLinkPathQuery;
     private _goTo;
     private _goToLink;
-    private readonly _listOfLinkPaths;
-    private readonly _appApi;
+    private get _listOfLinkPaths();
+    private get _appApi();
     render(): JSX.Element;
 }

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {DynaShowcase} from './DynaShowcase';
 import {faIcon} from './utils/faIcon';
 

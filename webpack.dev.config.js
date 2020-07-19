@@ -22,13 +22,13 @@ const config = {
   optimization: {
     usedExports: true,       // true to remove the dead code, for more https://webpack.js.org/guides/tree-shaking/
   },
+  devtool: "source-map",     // help: https://webpack.js.org/configuration/devtool/
   devServer: {
     hot: true,
     port: serverPort,
     publicPath: '/static',
     historyApiFallback: true,
   },
-  devtool: 'cheap-module-eval-source-map',
   output: {
     path: path.resolve(__dirname, 'dev/public/static'),
     filename: 'bundle.js'
@@ -38,7 +38,7 @@ const config = {
     extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js", ".jsx"]
   },
   module: {
-    rules: loaders,
+    rules: loaders.module.rules,
   },
   node: {
     // universal app? place here your conditional imports for node env
@@ -49,7 +49,7 @@ const config = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),     // enable HMR globally
     new webpack.NamedModulesPlugin(),             // prints more readable module names in the browser console on HMR updates
-  ].concat(plugins),
+  ].concat(plugins.plugins),
 };
 
 module.exports = config;

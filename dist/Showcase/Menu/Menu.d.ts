@@ -16,7 +16,7 @@ export interface IMenuSettings {
 export declare class Menu extends React.Component<IMenuProps, IMenuState> {
     static defaultProps: IMenuProps;
     componentDidMount(): void;
-    private readonly style;
+    private get style();
     private cx;
     private scrollToFocused;
     private renderLogo;
