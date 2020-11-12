@@ -25,7 +25,6 @@ export interface IViewsAsLinks {
     link: ILink;
 }
 export declare class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowcaseState> {
-    static defaultProps: IDynaShowcaseProps;
     constructor(props: IDynaShowcaseProps, context: any);
     private _history;
     private _urlQueryHandler;

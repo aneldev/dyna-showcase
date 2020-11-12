@@ -11,8 +11,6 @@ export interface ShowcaseProps {
 export interface ShowcaseState {
 }
 export declare class Showcase extends React.Component<ShowcaseProps, ShowcaseState> {
-    static defaultProps: IShowcase;
-    constructor(props: ShowcaseProps, context: any);
-    componentWillMount(): void;
+    componentDidMount(): void;
     render(): JSX.Element;
 }

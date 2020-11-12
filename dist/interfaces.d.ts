@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 export interface IShowcase {
-    logo?: JSX.Element;
+    logo?: JSX.Element | null;
     views: IShowcaseView[];
     defaultViewSlug?: string;
     config: {
