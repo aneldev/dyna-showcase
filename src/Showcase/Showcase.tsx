@@ -21,7 +21,7 @@ export interface ShowcaseState {
 }
 
 export class Showcase extends React.Component<ShowcaseProps, ShowcaseState> {
-  public componentWillMount(): void {
+  public componentDidMount():void {
     const {viewSlug, appApi: {goTo, listOfLinkPaths}} = this.props;
 
     if (!viewSlug) {
