@@ -17,16 +17,17 @@
     "allowJs": false,
     "skipLibCheck": true,
     "noErrorTruncation": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": false,
-    "noImplicitThis": false,
-    "strictNullChecks": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "types": [
-      "node"
+      "node",
+      "jest"
     ]
   },
   "files": [
