@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
-import {History} from 'history'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {History} from 'history';
 import {IShowcase, IShowcaseView} from './interfaces';
 import {Showcase} from './Showcase/Showcase';
 import {DynaURLQuery} from './utils/DynaUrlQuery';
@@ -10,7 +10,7 @@ const styles = require('./DynaShowcase.module.less');
 const defaultMenuCssModule = require('../styles/menu-style-white.module.less');
 
 export interface IDynaShowcaseProps {
-  baseUrl?: string,
+  baseUrl?: string;
   showcase: IShowcase;
   menuCssModule?: any;
 }
@@ -22,7 +22,9 @@ export interface IAppApi {
   urlQuery: any;
   setUrlQuery: (partialQuery: any) => void;
   listOfLinkPaths: IViewsAsLinks[];
+
   createLinkPath(viewSlug: string, propsSlug?: string, query?: any): string;
+
   goTo(viewSlug: string, propsSlug?: string, query?: any): void;
 }
 
@@ -39,11 +41,6 @@ export interface IViewsAsLinks {
 }
 
 export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowcaseState> {
-  static defaultProps: IDynaShowcaseProps={
-    showcase: null,
-    menuCssModule: defaultMenuCssModule,
-  };
-
   constructor(props: IDynaShowcaseProps, context: any) {
     super(props, context);
   }
@@ -53,20 +50,20 @@ export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowc
 
   private _createLinkPath(viewSlug: string, propsSlug?: string): string {
     const path: string[] = [];
-    const view: IShowcaseView = this.props.showcase.views.find((view: IShowcaseView) => view.slug === viewSlug);
+    const view: IShowcaseView | undefined = this.props.showcase.views.find((view: IShowcaseView) => view.slug === viewSlug);
 
     if (view && view.props && view.props.length && !propsSlug) propsSlug = view.props[0].slug;
 
     path.push(viewSlug);
-    path.push(propsSlug);
+    propsSlug && path.push(propsSlug);
 
     return `/${path.join('/')}`;
   }
 
   private _createLinkPathQuery(viewSlug: string, propsSlug?: string, query?: any): string {
-    const path:string = this._createLinkPath(viewSlug, propsSlug);
-    let queryString:string = this._urlQueryHandler.getQuery(query).asString;
-    if (queryString) queryString='?'+queryString;
+    const path: string = this._createLinkPath(viewSlug, propsSlug);
+    let queryString: string = this._urlQueryHandler.getQuery(query).asString;
+    if (queryString) queryString = '?' + queryString;
 
     return `${path}${queryString}`;
   }
@@ -74,8 +71,8 @@ export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowc
   private _goTo(viewSlug: string, propsSlug?: string, query?: any): void {
     this._goToLink({
       path: this._createLinkPath(viewSlug, propsSlug),
-      query
-    })
+      query,
+    });
   }
 
   private _goToLink(linkTo: ILink): void {
@@ -97,8 +94,8 @@ export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowc
       if (!(view.props && view.props.length)) {
         links.push({
           viewSlug: view.slug,
-          propsSlug: null,
-          link: {path:this._createLinkPath(view.slug, null)},
+          propsSlug: undefined,
+          link: {path: this._createLinkPath(view.slug)},
         });
       }
       view.props && view.props.forEach((viewProps: IShowcaseView) => {
@@ -106,7 +103,7 @@ export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowc
         links.push({
           viewSlug: view.slug,
           propsSlug: viewProps.slug,
-          link: {path:this._createLinkPath(view.slug, viewProps.slug)},
+          link: {path: this._createLinkPath(view.slug, viewProps.slug)},
         });
       });
     });
@@ -115,18 +112,23 @@ export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowc
   }
 
   private get _appApi(): IAppApi {
-    let self:DynaShowcase=this;
+    let self: DynaShowcase = this;
     return {
-      get urlQuery(): any {return self._urlQueryHandler.getQuery().data},
+      get urlQuery(): any {
+        return self._urlQueryHandler.getQuery().data;
+      },
       setUrlQuery: (partialQuery: any) => this._goToLink({query: partialQuery}),
       createLinkPath: this._createLinkPathQuery.bind(this),
       listOfLinkPaths: this._listOfLinkPaths,
       goTo: this._goTo.bind(this),
-    }
+    };
   }
 
   public render(): JSX.Element {
-    const {baseUrl} = this.props;
+    const {
+      baseUrl,
+      menuCssModule = defaultMenuCssModule,
+    } = this.props;
 
     // todo: obtain the the history in a better way
     return (
@@ -148,9 +150,9 @@ export class DynaShowcase extends React.Component<IDynaShowcaseProps, IDynaShowc
                     viewSlug={routeProps.match.params.viewSlug}
                     propsSlug={routeProps.match.params.propsSlug}
                     appApi={this._appApi}
-                    menuStyle={this.props.menuCssModule}
+                    menuStyle={menuCssModule}
                   />
-                )
+                );
               }
             }
           />

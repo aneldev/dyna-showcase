@@ -4,15 +4,26 @@ import {IShowcase} from "../../src";
 
 import {Logo} from "../logo";
 
-import {Button, ButtonGroup, ButtonToolbar, DropdownButton, Glyphicon, MenuItem, SplitButton, ToggleButton, ToggleButtonGroup} from 'react-bootstrap';
-import {Link}                                                                                                                  from "react-router-dom";
-import {faIcon}                                                                                                                from "../../src";
+import {
+  Button,
+  ButtonGroup,
+  ButtonToolbar,
+  DropdownButton,
+  Glyphicon,
+  MenuItem,
+  SplitButton,
+  ToggleButton,
+  ToggleButtonGroup,
+} from 'react-bootstrap';
+import {Link} from "react-router-dom";
+import {faIcon} from "../../src";
 
 import "./showcase.less";
+
 const styles = require('./showcase.module.less');
 
 export default {
-  logo: <Logo />,
+  logo: <Logo/>,
   views: [
     {
       slug: 'intro',
@@ -22,10 +33,12 @@ export default {
       component: (
         <div>
           <h3>The best way</h3>
-          <p>The best way to introduce the <strong>React Component showcase</strong> is to introduce the <strong>Bootstrap React Component</strong>.</p>
+          <p>The best way to introduce the <strong>React Component showcase</strong> is to introduce the <strong>Bootstrap
+            React Component</strong>.</p>
           <h3>React-Bootstrap</h3>
           <p>The most popular front-end framework, rebuilt for the React.</p>
-          <p>React-Bootstrap is a library of reusable front-end components. You'll get the look-and-feel of Twitter Bootstrap, but with a much cleaner code, via Facebook's React.js framework.</p>
+          <p>React-Bootstrap is a library of reusable front-end components. You'll get the look-and-feel of Twitter
+            Bootstrap, but with a much cleaner code, via Facebook's React.js framework.</p>
           <h4>So, welcome on board!</h4>
         </div>
       ),
@@ -58,15 +71,20 @@ export default {
       component: (
         <div>
           <h3>Awesome for debugging</h3>
-          <p>With <strong>React Component showcase</strong> you easy debug your components. Create a set of <code>props</code> and see them how will look in the real world.</p>
+          <p>With <strong>React Component showcase</strong> you easy debug your components. Create a set
+            of <code>props</code> and see them how will look in the real world.</p>
           <h3>Check the actual frame</h3>
-          <p>Press the <strong>frame</strong> button at the bottom of the aside menu to see the actual size of your component.</p>
+          <p>Press the <strong>frame</strong> button at the bottom of the aside menu to see the actual size of your
+            component.</p>
           <h3>Deep links</h3>
-          <p><strong>React Component showcase</strong> works like a website. You can bookmark exactly what you see during debugging.</p>
+          <p><strong>React Component showcase</strong> works like a website. You can bookmark exactly what you see
+            during debugging.</p>
           <h1>Is not only for debugging</h1>
           <h3>It is also for development</h3>
-          <p>Add the <strong>React Component showcase</strong> in your boilerplate and have it as the old fashioned <code>Playground</code></p>
-          <p>If you don't like the <code>Showcase</code> name, name it <code>Playground</code>, or <strong>Lola</strong>, or even more <strong>Jack Norris</strong> and in general whatever fits best to
+          <p>Add the <strong>React Component showcase</strong> in your boilerplate and have it as the old
+            fashioned <code>Playground</code></p>
+          <p>If you don't like the <code>Showcase</code> name, name it <code>Playground</code>, or <strong>Lola</strong>,
+            or even more <strong>Jack Norris</strong> and in general whatever fits best to
             you. 😀</p>
         </div>
       ),
@@ -95,35 +113,35 @@ export default {
           title: 'Primary button',
           description: 'The primary the button',
           props: {
-            bsStyle:'primary'
+            bsStyle: 'primary',
           },
         },
         {
           slug: 'success',
           title: 'Success button',
           props: {
-            bsStyle:'success'
+            bsStyle: 'success',
           },
         },
         {
           slug: 'info',
           title: 'Info button',
           props: {
-            bsStyle: 'info'
+            bsStyle: 'info',
           },
         },
         {
           slug: 'warning',
           title: 'Warning button',
           props: {
-            bsStyle: 'warning'
+            bsStyle: 'warning',
           },
         },
         {
           slug: 'danger',
           title: 'Danger button',
           props: {
-            bsStyle: 'danger'
+            bsStyle: 'danger',
           },
         },
         {
@@ -131,7 +149,7 @@ export default {
           title: 'Disabled danger button',
           props: {
             bsStyle: 'danger',
-            disabled: true
+            disabled: true,
           },
         },
       ],
@@ -187,7 +205,7 @@ export default {
         }
 
         return <ButtonToolbar>{BUTTONS.map(renderDropdownButton)}</ButtonToolbar>;
-      })()
+      })(),
     },
     {
       slug: 'glyphIcon',
@@ -200,8 +218,8 @@ export default {
         title: iconName,
         description: `This is the ${iconName} icon`,
         props: {
-          glyph: iconName
-        }
+          glyph: iconName,
+        },
       })),
     },
     {
@@ -219,5 +237,5 @@ export default {
         </div>
       ),
     },
-  ]
-}as IShowcase;
+  ],
+} as IShowcase;

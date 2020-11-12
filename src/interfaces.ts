@@ -1,16 +1,16 @@
 import {CSSProperties} from "react";
 
 export interface IShowcase {
-  logo?: JSX.Element;
+  logo?: JSX.Element | null;
   views: IShowcaseView[];
-  defaultViewSlug?:string;
-  config:{
+  defaultViewSlug?: string;
+  config: {
     // todo: not supported yet
     showNavButtons?: boolean;
     showComponentsMenu?: boolean;
     showComponentInfoButton?: boolean;
     showActualFrameButton?: boolean;
-  }
+  };
 }
 
 export interface IShowcaseView {

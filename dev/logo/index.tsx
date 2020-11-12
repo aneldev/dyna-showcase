@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {faIcon} from "dyna-showcase";
+import {faIcon} from "../../src";
 
 const styles = require('./index.module.less');
 
-export const Logo= ()=>(
+export const Logo = () => (
   <div className={styles.container}>
     <div className={styles.logo}>
       {faIcon('cubes')}

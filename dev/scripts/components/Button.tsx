@@ -1,10 +1,8 @@
 import * as React from "react";
-import {Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap';
 
-const styles: any = require('./Button.module.less');
-
-export interface IButtonProps{
-  caption: string,
+export interface IButtonProps {
+  caption: string;
   buttonStyle?: string;
 }
 
@@ -15,10 +13,6 @@ export class SuperButton extends React.Component<IButtonProps, IButtonState> {
   constructor(props: IButtonProps, context: any) {
     super(props as any, context);
   }
-
-  public static defaultProps: IButtonProps = {
-    caption: null,
-  };
 
   render(): JSX.Element {
     const {

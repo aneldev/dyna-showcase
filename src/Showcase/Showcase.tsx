@@ -1,21 +1,19 @@
 import * as React from 'react';
-import * as classNames from 'classnames/bind';
 
 import {IShowcase} from '../interfaces';
 
-import {Menu} from './Menu/Menu'
+import {Menu} from './Menu/Menu';
 import {Viewer} from './Viewer/Viewer';
 import {IAppApi, IViewsAsLinks} from "../DynaShowcase";
+import {cn} from "../utils/cn";
 
 const styles = require('./Showcase.module.less');
-
-const cx = classNames.bind(styles);
 
 export interface ShowcaseProps {
   showcase: IShowcase;
   viewSlug: string;
   propsSlug: string;
-  appApi: IAppApi,
+  appApi: IAppApi;
   menuStyle: any;
 }
 
@@ -23,26 +21,6 @@ export interface ShowcaseState {
 }
 
 export class Showcase extends React.Component<ShowcaseProps, ShowcaseState> {
-  static defaultProps: IShowcase = {
-    logo: null,
-    views: [],
-    config: {
-      showNavButtons: true,
-      showComponentsMenu: true,
-      showComponentInfoButton: true,
-      showActualFrameButton: true,
-    },
-  };
-
-  constructor(props: ShowcaseProps, context: any) {
-    super(props, context);
-
-    props.showcase.config = {
-      ...Showcase.defaultProps.config,
-      ...props.showcase.config,
-    }
-  }
-
   public componentWillMount(): void {
     const {viewSlug, appApi: {goTo, listOfLinkPaths}} = this.props;
 
@@ -55,12 +33,12 @@ export class Showcase extends React.Component<ShowcaseProps, ShowcaseState> {
   public render(): JSX.Element {
     const {
       showcase, viewSlug, propsSlug,
-      appApi: {urlQuery:{hideMenu, zoom, showFrame, hideNavArrows, kbNav}}
+      appApi: {urlQuery: {hideMenu, zoom, showFrame, hideNavArrows, kbNav}},
     } = this.props;
-    const asideClassName:string = cx({
-      asideMenu: true,
-      hideAsideMenu: hideMenu,
-    });
+    const asideClassName: string = cn(
+      styles.asideMenu,
+      hideMenu && styles.hideAsideMenu,
+    );
 
     return (
       <div className={styles.container}>
