@@ -298,3 +298,12 @@ This boilerplate offers to `dyna-showcase`:
      
 [See other useful libraries and tools, ready to drink!](https://github.com/aneldev)
 
+# Change log
+
+## 2.0.0
+
+Works with React 16
+
+## 3.0.0
+
+Works with React 17
